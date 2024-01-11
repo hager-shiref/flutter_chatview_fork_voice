@@ -160,11 +160,11 @@ class ReactionPopupState extends State<ReactionPopup>
               _message!,
               emoji,
             );
-            chatController?.setReaction(
-              emoji: emoji,
-              messageId: _message!.id,
-              userId: currentUser!.id,
-            );
+            // chatController?.setReaction(
+            //   emoji: emoji,
+            //   messageId: _message!.id,
+            //   userId: currentUser!.id,
+            // );
           }
         },
         emojiConfiguration: reactionPopupConfig?.emojiConfig,

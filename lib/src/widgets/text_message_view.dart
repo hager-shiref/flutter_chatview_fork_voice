@@ -29,23 +29,27 @@ import 'link_preview.dart';
 import 'reaction_widget.dart';
 
 class TextMessageView extends StatelessWidget {
-  const TextMessageView({
-    Key? key,
-    required this.isMessageBySender,
-    required this.message,
-    this.chatBubbleMaxWidth,
-    this.inComingChatBubbleConfig,
-    this.outgoingChatBubbleConfig,
-    this.messageReactionConfig,
-    this.highlightMessage = false,
-    this.highlightColor,
-  }) : super(key: key);
+  const TextMessageView(
+      {Key? key,
+      required this.isMessageBySender,
+      required this.message,
+      this.chatBubbleMaxWidth,
+      this.inComingChatBubbleConfig,
+      this.outgoingChatBubbleConfig,
+      this.messageReactionConfig,
+      this.highlightMessage = false,
+      this.highlightColor,
+      this.isSpam,
+      this.spamMessage})
+      : super(key: key);
 
   /// Represents current message is sent by current user.
   final bool isMessageBySender;
 
   /// Provides message instance of chat.
   final Message message;
+  final bool? isSpam;
+  final String? spamMessage;
 
   /// Allow users to give max width of chat bubble.
   final double? chatBubbleMaxWidth;
@@ -85,30 +89,51 @@ class TextMessageView extends StatelessWidget {
               EdgeInsets.fromLTRB(
                   5, 0, 6, message.reaction.reactions.isNotEmpty ? 15 : 2),
           decoration: BoxDecoration(
-            color: highlightMessage ? highlightColor : _color,
+            color: highlightMessage
+                ? highlightColor
+                : isSpam == true
+                    ? Colors.red
+                    : _color,
             borderRadius: _borderRadius(textMessage),
           ),
-          child: textMessage.isUrl
-              ? LinkPreview(
-                  linkPreviewConfig: _linkPreviewConfig,
-                  url: textMessage,
-                )
-              : Text(
-                  textMessage,
+          child: isSpam == true
+              ? Text(textMessage,
                   style: _textStyle ??
                       textTheme.bodyMedium!.copyWith(
                         color: Colors.white,
                         fontSize: 16,
-                      ),
-                ),
+                      ))
+              : textMessage.isUrl
+                  ? LinkPreview(
+                      linkPreviewConfig: _linkPreviewConfig,
+                      url: textMessage,
+                    )
+                  : Text(
+                      textMessage,
+                      style: _textStyle ??
+                          textTheme.bodyMedium!.copyWith(
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                    ),
         ),
-        if (message.reaction.reactions.isNotEmpty)
-          ReactionWidget(
-            key: key,
-            isMessageBySender: isMessageBySender,
-            reaction: message.reaction,
-            messageReactionConfig: messageReactionConfig,
-          ),
+        isSpam == true
+            ? Tooltip(
+                message: spamMessage,
+                triggerMode: TooltipTriggerMode.tap,
+                child: const Icon(
+                  Icons.info,
+                  size: 20,
+                  color: Colors.white,
+                ))
+            : const SizedBox(),
+        // if (message.reaction.reactions.isNotEmpty)
+        //   ReactionWidget(
+        //     key: key,
+        //     isMessageBySender: isMessageBySender,
+        //     reaction: message.reaction,
+        //     messageReactionConfig: messageReactionConfig,
+        //   ),
       ],
     );
   }

@@ -133,12 +133,12 @@ class ImageMessageView extends StatelessWidget {
                 ),
               ),
             ),
-            if (message.reaction.reactions.isNotEmpty)
-              ReactionWidget(
-                isMessageBySender: isMessageBySender,
-                reaction: message.reaction,
-                messageReactionConfig: messageReactionConfig,
-              ),
+           // if (message.reaction.reactions.isNotEmpty)
+              // ReactionWidget(
+              //   isMessageBySender: isMessageBySender,
+              //   reaction: message.reaction,
+              //   messageReactionConfig: messageReactionConfig,
+              // ),
           ],
         ),
         if (!isMessageBySender) iconButton,

@@ -52,7 +52,6 @@ class MessageView extends StatefulWidget {
 
   /// Provides message instance of chat.
   final Message message;
-
   /// Represents current message is sent by current user.
   final bool isMessageBySender;
 
@@ -210,12 +209,14 @@ class _MessageViewState extends State<MessageView>
                   );
                 } else if (widget.message.messageType.isText) {
                   return TextMessageView(
+                    isSpam:widget.message.isSpam,
+                    spamMessage: widget.message.spamMessage,
                     inComingChatBubbleConfig: widget.inComingChatBubbleConfig,
                     outgoingChatBubbleConfig: widget.outgoingChatBubbleConfig,
                     isMessageBySender: widget.isMessageBySender,
                     message: widget.message,
                     chatBubbleMaxWidth: widget.chatBubbleMaxWidth,
-                    messageReactionConfig: messageConfig?.messageReactionConfig,
+                    // messageReactionConfig: messageConfig?.messageReactionConfig,
                     highlightColor: widget.highlightColor,
                     highlightMessage: widget.shouldHighlight,
                   );

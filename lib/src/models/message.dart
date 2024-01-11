@@ -26,6 +26,8 @@ import 'package:flutter/foundation.dart';
 class Message {
   /// Provides id
   final String id;
+  final bool isSpam;
+  final String spamMessage;
 
   /// Used for accessing widget's render box.
   final GlobalKey key;
@@ -59,6 +61,9 @@ class Message {
     required this.message,
     required this.createdAt,
     required this.sendBy,
+    required this.isSpam,
+    required this.spamMessage,
+
     this.replyMessage = const ReplyMessage(),
     Reaction? reaction,
     this.messageType = MessageType.text,
@@ -94,7 +99,9 @@ class Message {
       id: json["id"],
       message: json["message"],
       createdAt: json["createdAt"],
+      isSpam: json['is_spam'],
       sendBy: json["sendBy"],
+      spamMessage: json['spam_message'],
       replyMessage: ReplyMessage.fromJson(json["reply_message"]),
       reaction: Reaction.fromJson(json["reaction"]),
       messageType: json["message_type"],
@@ -106,6 +113,8 @@ class Message {
         'message': message,
         'createdAt': createdAt,
         'sendBy': sendBy,
+    'is_spam':isSpam,
+    'spam_message':spamMessage,
         'reply_message': replyMessage.toJson(),
         'reaction': reaction.toJson(),
         'message_type': messageType,

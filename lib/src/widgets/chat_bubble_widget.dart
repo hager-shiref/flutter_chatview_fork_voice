@@ -38,6 +38,7 @@ class ChatBubbleWidget extends StatefulWidget {
     required this.onLongPress,
     required this.slideAnimation,
     required this.onSwipe,
+    required this.isSpam,
     this.profileCircleConfig,
     this.chatBubbleConfig,
     this.repliedMessageConfig,
@@ -51,7 +52,7 @@ class ChatBubbleWidget extends StatefulWidget {
 
   /// Represent current instance of message.
   final Message message;
-
+  final bool isSpam;
   /// Give callback once user long press on chat bubble.
   final DoubleCallBack onLongPress;
 
@@ -335,12 +336,12 @@ class _ChatBubbleWidgetState extends State<ChatBubbleWidget> {
               widget.chatBubbleConfig?.longPressAnimationDuration,
           onDoubleTap: featureActiveConfig?.enableDoubleTapToLike ?? false
               ? widget.chatBubbleConfig?.onDoubleTap ??
-                  (message) => currentUser != null
-                      ? chatController?.setReaction(
-                          emoji: heart,
-                          messageId: message.id,
-                          userId: currentUser!.id,
-                        )
+                  (message) => currentUser != null?null
+                      // ? chatController?.setReaction(
+                      //     emoji: heart,
+                      //     messageId: message.id,
+                      //     userId: currentUser!.id,
+                      //   )
                       : null
               : null,
           shouldHighlight: widget.shouldHighlight,

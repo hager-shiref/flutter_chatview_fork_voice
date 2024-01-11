@@ -178,6 +178,7 @@ class _ChatScreenState extends State<ChatScreen> {
             receiptsWidgetConfig:
                 const ReceiptsWidgetConfig(showReceiptsIn: ShowReceiptsIn.all),
             color: Color(0xFF11897D),
+            isSpam: true,
           ),
           inComingChatBubbleConfig: ChatBubble(
             linkPreviewConfig: LinkPreviewConfiguration(
@@ -278,7 +279,9 @@ class _ChatScreenState extends State<ChatScreen> {
     final id = int.parse(Data.messageList.last.id) + 1;
     _chatController.addMessage(
       Message(
+        isSpam: true,
         id: id.toString(),
+        spamMessage: 'this is spam message',
         createdAt: DateTime.now(),
         message: message,
         sendBy: currentUser.id,

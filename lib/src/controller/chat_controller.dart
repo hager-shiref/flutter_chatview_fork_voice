@@ -75,39 +75,40 @@ class ChatController {
   }
 
   /// Function for setting reaction on specific chat bubble
-  void setReaction({
-    required String emoji,
-    required String messageId,
-    required String userId,
-  }) {
-    final message =
-        initialMessageList.firstWhere((element) => element.id == messageId);
-    final reactedUserIds = message.reaction.reactedUserIds;
-    final indexOfMessage = initialMessageList.indexOf(message);
-    final userIndex = reactedUserIds.indexOf(userId);
-    if (userIndex != -1) {
-      if (message.reaction.reactions[userIndex] == emoji) {
-        message.reaction.reactions.removeAt(userIndex);
-        message.reaction.reactedUserIds.removeAt(userIndex);
-      } else {
-        message.reaction.reactions[userIndex] = emoji;
-      }
-    } else {
-      message.reaction.reactions.add(emoji);
-      message.reaction.reactedUserIds.add(userId);
-    }
-    initialMessageList[indexOfMessage] = Message(
-      id: messageId,
-      message: message.message,
-      createdAt: message.createdAt,
-      sendBy: message.sendBy,
-      replyMessage: message.replyMessage,
-      reaction: message.reaction,
-      messageType: message.messageType,
-      status: message.status,
-    );
-    messageStreamController.sink.add(initialMessageList);
-  }
+  // void setReaction({
+  //   required String emoji,
+  //   required String messageId,
+  //   required String userId,
+  // }) {
+  //   final message =
+  //       initialMessageList.firstWhere((element) => element.id == messageId);
+  //   final reactedUserIds = message.reaction.reactedUserIds;
+  //   final indexOfMessage = initialMessageList.indexOf(message);
+  //   final userIndex = reactedUserIds.indexOf(userId);
+  //   if (userIndex != -1) {
+  //     if (message.reaction.reactions[userIndex] == emoji) {
+  //       message.reaction.reactions.removeAt(userIndex);
+  //       message.reaction.reactedUserIds.removeAt(userIndex);
+  //     } else {
+  //       message.reaction.reactions[userIndex] = emoji;
+  //     }
+  //   } else {
+  //     message.reaction.reactions.add(emoji);
+  //     message.reaction.reactedUserIds.add(userId);
+  //   }
+  //   initialMessageList[indexOfMessage] = Message(
+  //     id: messageId,
+  //     message: message.message,
+  //     isSpam:message.isSpam ,
+  //     createdAt: message.createdAt,
+  //     sendBy: message.sendBy,
+  //     replyMessage: message.replyMessage,
+  //     reaction: message.reaction,
+  //     messageType: message.messageType,
+  //     status: message.status,
+  //   );
+  //   messageStreamController.sink.add(initialMessageList);
+  // }
 
   /// Function to scroll to last messages in chat view
   void scrollToLastMessage() => Timer(

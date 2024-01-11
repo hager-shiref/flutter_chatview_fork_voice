@@ -303,6 +303,7 @@ class _ChatGroupedListWidgetState extends State<ChatGroupedListWidget>
                     builder: (context, state, child) {
                       return ChatBubbleWidget(
                         key: message.key,
+                        isSpam:message.isSpam,
                         messageTimeTextStyle:
                             chatBackgroundConfig.messageTimeTextStyle,
                         messageTimeIconColor:

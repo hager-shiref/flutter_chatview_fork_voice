@@ -25,6 +25,7 @@ import '../../chatview.dart';
 class ChatBubble {
   /// Used for giving color of chat bubble.
   final Color? color;
+  final bool? isSpam;
 
   /// Used for giving border radius of chat bubble.
   final BorderRadiusGeometry? borderRadius;
@@ -58,6 +59,7 @@ class ChatBubble {
     this.textStyle,
     this.padding,
     this.margin,
+    this.isSpam,
     this.linkPreviewConfig,
     this.senderNameTextStyle,
     this.receiptsWidgetConfig,
