@@ -282,7 +282,7 @@ class _ChatScreenState extends State<ChatScreen> {
         isSpam: true,
         id: id.toString(),
         spamMessage: 'this is spam message',
-        createdAt: DateTime.now(),
+        createdAt: DateTime.now().toString(),
         message: message,
         sendBy: currentUser.id,
         replyMessage: replyMessage,

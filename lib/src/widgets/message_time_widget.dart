@@ -32,7 +32,7 @@ class MessageTimeWidget extends StatelessWidget {
   }) : super(key: key);
 
   /// Provides message crated date time.
-  final DateTime messageTime;
+  final String messageTime;
 
   /// Represents message is sending by current user.
   final bool isCurrentUser;
@@ -69,7 +69,7 @@ class MessageTimeWidget extends StatelessWidget {
             ),
             const SizedBox(width: 4),
             Text(
-              messageTime.getTimeFromDateTime,
+              messageTime,
               style: messageTimeTextStyle ?? const TextStyle(fontSize: 12),
             ),
           ],

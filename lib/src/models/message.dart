@@ -36,7 +36,7 @@ class Message {
   final String message;
 
   /// Provides message created date time.
-  final DateTime createdAt;
+  final String createdAt;
 
   /// Provides id of sender of message.
   final String sendBy;
@@ -63,7 +63,6 @@ class Message {
     required this.sendBy,
     required this.isSpam,
     required this.spamMessage,
-
     this.replyMessage = const ReplyMessage(),
     Reaction? reaction,
     this.messageType = MessageType.text,
@@ -113,8 +112,8 @@ class Message {
         'message': message,
         'createdAt': createdAt,
         'sendBy': sendBy,
-    'is_spam':isSpam,
-    'spam_message':spamMessage,
+        'is_spam': isSpam,
+        'spam_message': spamMessage,
         'reply_message': replyMessage.toJson(),
         'reaction': reaction.toJson(),
         'message_type': messageType,

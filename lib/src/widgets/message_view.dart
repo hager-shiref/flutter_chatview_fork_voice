@@ -234,12 +234,9 @@ class _MessageViewState extends State<MessageView>
                     true) {
                   return widget.outgoingChatBubbleConfig?.receiptsWidgetConfig
                           ?.lastSeenAgoBuilder
-                          ?.call(
-                              widget.message,
-                              applicationDateFormatter(
-                                  widget.message.createdAt)) ??
-                      lastSeenAgoBuilder(widget.message,
-                          applicationDateFormatter(widget.message.createdAt));
+                          ?.call(widget.message, widget.message.createdAt) ??
+                      lastSeenAgoBuilder(
+                          widget.message, widget.message.createdAt);
                 }
                 return const SizedBox();
               }

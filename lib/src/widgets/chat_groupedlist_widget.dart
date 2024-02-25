@@ -281,7 +281,7 @@ class _ChatGroupedListWidgetState extends State<ChatGroupedListWidget>
             ? GroupedListView<Message, String>(
                 shrinkWrap: true,
                 elements: snapshot.data!,
-                groupBy: (element) => element.createdAt.getDateFromDateTime,
+                groupBy: (element) => element.createdAt,
                 itemComparator: (message1, message2) =>
                     message1.message.compareTo(message2.message),
                 physics: const NeverScrollableScrollPhysics(),
@@ -303,7 +303,7 @@ class _ChatGroupedListWidgetState extends State<ChatGroupedListWidget>
                     builder: (context, state, child) {
                       return ChatBubbleWidget(
                         key: message.key,
-                        isSpam:message.isSpam,
+                        isSpam: message.isSpam,
                         messageTimeTextStyle:
                             chatBackgroundConfig.messageTimeTextStyle,
                         messageTimeIconColor:
