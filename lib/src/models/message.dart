@@ -36,7 +36,8 @@ class Message {
   final String message;
 
   /// Provides message created date time.
-  final String createdAt;
+  final DateTime createdAt;
+  final String readAt;
 
   /// Provides id of sender of message.
   final String sendBy;
@@ -62,6 +63,7 @@ class Message {
     required this.createdAt,
     required this.sendBy,
     required this.isSpam,
+    required this.readAt,
     required this.spamMessage,
     this.replyMessage = const ReplyMessage(),
     Reaction? reaction,
@@ -105,7 +107,8 @@ class Message {
       reaction: Reaction.fromJson(json["reaction"]),
       messageType: json["message_type"],
       voiceMessageDuration: json["voice_message_duration"],
-      status: json['status']);
+      status: json['status'],
+      readAt: json['read_at']);
 
   Map<String, dynamic> toJson() => {
         'id': id,
@@ -118,6 +121,7 @@ class Message {
         'reaction': reaction.toJson(),
         'message_type': messageType,
         'voice_message_duration': voiceMessageDuration,
-        'status': status.name
+        'status': status.name,
+        'read_at': readAt
       };
 }

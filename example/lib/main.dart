@@ -280,9 +280,10 @@ class _ChatScreenState extends State<ChatScreen> {
     _chatController.addMessage(
       Message(
         isSpam: true,
+        readAt: 'Today 11:01 AM',
         id: id.toString(),
         spamMessage: 'this is spam message',
-        createdAt: DateTime.now().toString(),
+        createdAt: DateTime.now(),
         message: message,
         sendBy: currentUser.id,
         replyMessage: replyMessage,

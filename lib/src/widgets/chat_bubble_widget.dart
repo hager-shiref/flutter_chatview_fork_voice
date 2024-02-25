@@ -53,6 +53,7 @@ class ChatBubbleWidget extends StatefulWidget {
   /// Represent current instance of message.
   final Message message;
   final bool isSpam;
+
   /// Give callback once user long press on chat bubble.
   final DoubleCallBack onLongPress;
 
@@ -135,7 +136,7 @@ class _ChatBubbleWidgetState extends State<ChatBubbleWidget> {
               child: Align(
                 alignment: Alignment.centerRight,
                 child: MessageTimeWidget(
-                  messageTime: widget.message.createdAt,
+                  messageTime: widget.message.createdAt.toString(),
                   isCurrentUser: isMessageBySender,
                   messageTimeIconColor: widget.messageTimeIconColor,
                   messageTimeTextStyle: widget.messageTimeTextStyle,
@@ -336,7 +337,8 @@ class _ChatBubbleWidgetState extends State<ChatBubbleWidget> {
               widget.chatBubbleConfig?.longPressAnimationDuration,
           onDoubleTap: featureActiveConfig?.enableDoubleTapToLike ?? false
               ? widget.chatBubbleConfig?.onDoubleTap ??
-                  (message) => currentUser != null?null
+                  (message) => currentUser != null
+                      ? null
                       // ? chatController?.setReaction(
                       //     emoji: heart,
                       //     messageId: message.id,
