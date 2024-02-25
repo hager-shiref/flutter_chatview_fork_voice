@@ -21,9 +21,11 @@
  */
 import 'package:chatview/chatview.dart';
 import 'package:chatview/src/widgets/chat_view_inherited_widget.dart';
+import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
 
 import 'package:chatview/src/extensions/extensions.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import '../utils/constants/constants.dart';
 import 'image_message_view.dart';
 import 'text_message_view.dart';
@@ -52,6 +54,7 @@ class MessageView extends StatefulWidget {
 
   /// Provides message instance of chat.
   final Message message;
+
   /// Represents current message is sent by current user.
   final bool isMessageBySender;
 
@@ -164,41 +167,7 @@ class _MessageViewState extends State<MessageView>
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           (() {
-                if (message.isAllEmoji) {
-                  return Stack(
-                    clipBehavior: Clip.none,
-                    children: [
-                      Padding(
-                        padding: emojiMessageConfiguration?.padding ??
-                            EdgeInsets.fromLTRB(
-                              leftPadding2,
-                              4,
-                              leftPadding2,
-                              widget.message.reaction.reactions.isNotEmpty
-                                  ? 14
-                                  : 0,
-                            ),
-                        child: Transform.scale(
-                          scale: widget.shouldHighlight
-                              ? widget.highlightScale
-                              : 1.0,
-                          child: Text(
-                            message,
-                            style: emojiMessageConfiguration?.textStyle ??
-                                const TextStyle(fontSize: 30),
-                          ),
-                        ),
-                      ),
-                      if (widget.message.reaction.reactions.isNotEmpty)
-                        ReactionWidget(
-                          reaction: widget.message.reaction,
-                          messageReactionConfig:
-                              messageConfig?.messageReactionConfig,
-                          isMessageBySender: widget.isMessageBySender,
-                        ),
-                    ],
-                  );
-                } else if (widget.message.messageType.isImage) {
+                if (widget.message.messageType.isImage) {
                   return ImageMessageView(
                     message: widget.message,
                     isMessageBySender: widget.isMessageBySender,
@@ -209,7 +178,7 @@ class _MessageViewState extends State<MessageView>
                   );
                 } else if (widget.message.messageType.isText) {
                   return TextMessageView(
-                    isSpam:widget.message.isSpam,
+                    isSpam: widget.message.isSpam,
                     spamMessage: widget.message.spamMessage,
                     inComingChatBubbleConfig: widget.inComingChatBubbleConfig,
                     outgoingChatBubbleConfig: widget.outgoingChatBubbleConfig,
@@ -283,11 +252,22 @@ class _MessageViewState extends State<MessageView>
   }
 
   void _onLongPressStart(LongPressStartDetails details) async {
-    await _animationController?.forward();
-    widget.onLongPress(
-      details.globalPosition.dy - 120 - 64,
-      details.globalPosition.dx,
+    FlutterClipboard.copy(widget.message.message).then(
+      (value) => Fluttertoast.showToast(
+          msg: "Message copied to clipboard",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.grey,
+          textColor: Colors.white,
+          fontSize: 16.0),
     );
+
+    // await _animationController?.forward();
+    // widget.onLongPress(
+    //   details.globalPosition.dy - 120 - 64,
+    //   details.globalPosition.dx,
+    // );
   }
 
   @override

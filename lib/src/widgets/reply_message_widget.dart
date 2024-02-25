@@ -155,9 +155,11 @@ class ReplyMessageWidget extends StatelessWidget {
                                     )
                                   : Text(
                                       replyMessage,
-                                      style: repliedMessageConfig?.textStyle ??
-                                          textTheme.bodyMedium!
-                                              .copyWith(color: Colors.black),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(
+                                        color: Colors.black,
+                                      ),
                                     ),
                             ),
                     ),
