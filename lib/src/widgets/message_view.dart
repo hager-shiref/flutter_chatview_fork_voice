@@ -28,6 +28,7 @@ import 'package:chatview/src/extensions/extensions.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../utils/constants/constants.dart';
 import 'image_message_view.dart';
+import 'images_preview_page.dart';
 import 'text_message_view.dart';
 import 'reaction_widget.dart';
 import 'voice_message_view.dart';
@@ -172,7 +173,8 @@ class _MessageViewState extends State<MessageView>
                     message: widget.message,
                     isMessageBySender: widget.isMessageBySender,
                     imageMessageConfig: messageConfig?.imageMessageConfig,
-                    messageReactionConfig: messageConfig?.messageReactionConfig,
+                    messageReactionConfig:
+                        messageConfig?.messageReactionConfig,
                     highlightImage: widget.shouldHighlight,
                     highlightScale: widget.highlightScale,
                   );

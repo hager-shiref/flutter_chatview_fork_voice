@@ -26,6 +26,7 @@ import 'package:chatview/src/extensions/extensions.dart';
 import 'package:chatview/src/models/models.dart';
 import 'package:flutter/material.dart';
 
+import 'images_preview_page.dart';
 import 'reaction_widget.dart';
 import 'share_icon.dart';
 
@@ -76,9 +77,17 @@ class ImageMessageView extends StatelessWidget {
         Stack(
           children: [
             GestureDetector(
-              onTap: () => imageMessageConfig?.onTap != null
-                  ? imageMessageConfig?.onTap!(imageUrl)
-                  : null,
+              onTap: () {
+                print("tap here");
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return ImagesPreviewPage(
+                    images: [imageUrl],
+                  );
+                }));
+              },
+              // onTap: () => imageMessageConfig?.onTap != null
+              //     ? imageMessageConfig?.onTap!(imageUrl)
+              //     : null,
               child: Transform.scale(
                 scale: highlightImage ? highlightScale : 1.0,
                 alignment: isMessageBySender
@@ -133,12 +142,12 @@ class ImageMessageView extends StatelessWidget {
                 ),
               ),
             ),
-           // if (message.reaction.reactions.isNotEmpty)
-              // ReactionWidget(
-              //   isMessageBySender: isMessageBySender,
-              //   reaction: message.reaction,
-              //   messageReactionConfig: messageReactionConfig,
-              // ),
+            // if (message.reaction.reactions.isNotEmpty)
+            // ReactionWidget(
+            //   isMessageBySender: isMessageBySender,
+            //   reaction: message.reaction,
+            //   messageReactionConfig: messageReactionConfig,
+            // ),
           ],
         ),
         if (!isMessageBySender) iconButton,
