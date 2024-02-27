@@ -10,7 +10,7 @@ class Data {
       message: "Hi!",
       readAt: 'Today 11:01 AM',
       spamMessage: '',
-      createdAt: DateTime.parse('19'),
+      createdAt: DateTime.now(),
       sendBy: '1',
       // userId of who sends the message
       status: MessageStatus.read,
