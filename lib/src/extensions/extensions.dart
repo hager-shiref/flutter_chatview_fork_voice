@@ -43,7 +43,7 @@ extension TimeDifference on DateTime {
   }
 
   String get getDateFromDateTime {
-    final DateFormat formatter = DateFormat(dateFormat);
+    final DateFormat formatter = DateFormat(dateFormat, 'en_US');
     return formatter.format(this);
   }
 

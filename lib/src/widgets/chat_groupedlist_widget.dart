@@ -287,16 +287,18 @@ class _ChatGroupedListWidgetState extends State<ChatGroupedListWidget>
                 physics: const NeverScrollableScrollPhysics(),
                 order: chatBackgroundConfig.groupedListOrder,
                 sort: chatBackgroundConfig.sortEnable,
-                groupSeparatorBuilder: (separator) =>
-                    featureActiveConfig?.enableChatSeparator ?? false
-                        ? _GroupSeparatorBuilder(
-                            separator: separator,
-                            defaultGroupSeparatorConfig: chatBackgroundConfig
-                                .defaultGroupSeparatorConfig,
-                            groupSeparatorBuilder:
-                                chatBackgroundConfig.groupSeparatorBuilder,
-                          )
-                        : const SizedBox.shrink(),
+                groupSeparatorBuilder: (separator) {
+                  print("separator $separator");
+                  return featureActiveConfig?.enableChatSeparator ?? false
+                      ? _GroupSeparatorBuilder(
+                          separator: separator,
+                          defaultGroupSeparatorConfig:
+                              chatBackgroundConfig.defaultGroupSeparatorConfig,
+                          groupSeparatorBuilder:
+                              chatBackgroundConfig.groupSeparatorBuilder,
+                        )
+                      : SizedBox.shrink();
+                },
                 indexedItemBuilder: (context, message, index) {
                   return ValueListenableBuilder<String?>(
                     valueListenable: _replyId,
