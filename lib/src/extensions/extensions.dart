@@ -32,7 +32,7 @@ extension TimeDifference on DateTime {
   String get getDay {
     print("dateFormat $dateFormat");
     final DateTime formattedDate =
-        DateFormat(dateFormat).parse(toString());
+        DateFormat(dateFormat, 'en_US').parse(toString());
     // final DateFormat formatter = DateFormat.yMMMMd(enUS);
     final DateFormat formatter = DateFormat.yMMMd(enUS);
     final differenceInDays = formattedDate.difference(DateTime.now()).inDays;
