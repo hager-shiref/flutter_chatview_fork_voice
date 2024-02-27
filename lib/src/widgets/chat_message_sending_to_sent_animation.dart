@@ -47,11 +47,12 @@ class _SendingMessageAnimatingWidgetState
                   left: 2,
                   bottom: 5,
                 ),
-                child: Icon(
-                  Icons.send,
-                  color: Colors.grey,
-                  size: 12,
-                ),
+                child: SizedBox(),
+                // child: Icon(
+                //   Icons.send,
+                //   color: Colors.grey,
+                //   size: 12,
+                // ),
               )),
     );
   }
