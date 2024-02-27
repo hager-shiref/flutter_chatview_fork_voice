@@ -99,7 +99,7 @@ class Message {
   factory Message.fromJson(Map<String, dynamic> json) => Message(
       id: json["id"],
       message: json["message"],
-      createdAt: json["createdAt"],
+      createdAt: json["time_for_created_at"],
       isSpam: json['is_spam'],
       sendBy: json["sendBy"],
       spamMessage: json['spam_message'],
@@ -113,7 +113,7 @@ class Message {
   Map<String, dynamic> toJson() => {
         'id': id,
         'message': message,
-        'createdAt': createdAt,
+        'time_for_created_at': createdAt,
         'sendBy': sendBy,
         'is_spam': isSpam,
         'spam_message': spamMessage,
