@@ -47,27 +47,27 @@ class MessageTimeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment.centerRight,
+      alignment: Alignment.center,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              padding: const EdgeInsets.all(2),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
-                  color: messageTimeIconColor ?? Colors.black,
-                ),
-              ),
-              child: Icon(
-                isCurrentUser ? Icons.arrow_forward : Icons.arrow_back,
-                size: 10,
-                color: messageTimeIconColor ?? Colors.black,
-              ),
-            ),
-            const SizedBox(width: 4),
+            // Container(
+            //   padding: const EdgeInsets.all(2),
+            //   decoration: BoxDecoration(
+            //     shape: BoxShape.circle,
+            //     border: Border.all(
+            //       color: messageTimeIconColor ?? Colors.black,
+            //     ),
+            //   ),
+            //   child: Icon(
+            //     isCurrentUser ? Icons.arrow_forward : Icons.arrow_back,
+            //     size: 10,
+            //     color: messageTimeIconColor ?? Colors.black,
+            //   ),
+            // ),
+            // const SizedBox(width: 4),
             Text(
               messageTime,
               style: messageTimeTextStyle ?? const TextStyle(fontSize: 12),

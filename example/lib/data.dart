@@ -14,6 +14,7 @@ class Data {
       sendBy: '1',
       // userId of who sends the message
       status: MessageStatus.read,
+      messageTime: '${DateTime.now().hour}:${DateTime.now().minute}',
     ),
     Message(
       id: '2',
@@ -24,6 +25,7 @@ class Data {
       createdAt: DateTime.now(),
       sendBy: '2',
       status: MessageStatus.read,
+      messageTime: '${DateTime.now().hour}:${DateTime.now().minute}',
     ),
     Message(
       id: '3',
@@ -34,6 +36,7 @@ class Data {
       createdAt: DateTime.now(),
       sendBy: '1',
       status: MessageStatus.read,
+      messageTime: '${DateTime.now().hour}:${DateTime.now().minute}',
     ),
     Message(
       id: '4',
@@ -44,6 +47,7 @@ class Data {
       readAt: 'Today 11:01 AM',
       isSpam: false,
       status: MessageStatus.read,
+      messageTime: '${DateTime.now().hour}:${DateTime.now().minute}',
     ),
     Message(
       id: '5',
@@ -55,6 +59,7 @@ class Data {
       readAt: 'Today 11:01 AM',
       reaction: Reaction(reactions: ['\u{2764}'], reactedUserIds: ['1']),
       status: MessageStatus.read,
+      messageTime: '${DateTime.now().hour}:${DateTime.now().minute}',
     ),
     Message(
       id: '6',
@@ -65,6 +70,7 @@ class Data {
       readAt: 'Today 11:01 AM',
       isSpam: false,
       status: MessageStatus.read,
+      messageTime: '${DateTime.now().hour}:${DateTime.now().minute}',
     ),
     Message(
       id: '7',
@@ -75,6 +81,7 @@ class Data {
       readAt: 'Today 11:01 AM',
       isSpam: false,
       status: MessageStatus.read,
+      messageTime: '${DateTime.now().hour}:${DateTime.now().minute}',
     ),
     Message(
       id: '8',
@@ -91,6 +98,7 @@ class Data {
         replyBy: '2',
         messageId: '4',
       ),
+      messageTime: '${DateTime.now().hour}:${DateTime.now().minute}',
     ),
     Message(
       id: '9',
@@ -101,6 +109,7 @@ class Data {
       createdAt: DateTime.now(),
       sendBy: '1',
       status: MessageStatus.read,
+      messageTime: '${DateTime.now().hour}:${DateTime.now().minute}',
     ),
     Message(
       id: '10',
@@ -111,6 +120,7 @@ class Data {
       spamMessage: '',
       createdAt: DateTime.now(),
       sendBy: '1',
+      messageTime: '${DateTime.now().hour}:${DateTime.now().minute}',
       // reaction: Reaction(
       //   reactions: ['\u{2764}', '\u{2764}', '\u{2764}', '\u{2764}'],
       //   reactedUserIds: ['2', '4', '3', '1'],
@@ -127,6 +137,7 @@ class Data {
       sendBy: '1',
       reaction: Reaction(reactions: ['\u{2764}'], reactedUserIds: ['2']),
       status: MessageStatus.read,
+      messageTime: '${DateTime.now().hour}:${DateTime.now().minute}',
     ),
     Message(
       id: '12',
@@ -137,6 +148,7 @@ class Data {
       readAt: 'Today 11:01 AM',
       spamMessage: '',
       status: MessageStatus.read,
+      messageTime: '${DateTime.now().hour}:${DateTime.now().minute}',
     ),
     Message(
       id: '13',
@@ -149,6 +161,7 @@ class Data {
       sendBy: '1',
       isSpam: false,
       status: MessageStatus.read,
+      messageTime: '${DateTime.now().hour}:${DateTime.now().minute}',
     ),
     Message(
       id: '14',
@@ -161,6 +174,7 @@ class Data {
       isSpam: false,
       sendBy: '2',
       status: MessageStatus.read,
+      messageTime: '${DateTime.now().hour}:${DateTime.now().minute}',
     ),
   ];
 }

@@ -173,8 +173,7 @@ class _MessageViewState extends State<MessageView>
                     message: widget.message,
                     isMessageBySender: widget.isMessageBySender,
                     imageMessageConfig: messageConfig?.imageMessageConfig,
-                    messageReactionConfig:
-                        messageConfig?.messageReactionConfig,
+                    messageReactionConfig: messageConfig?.messageReactionConfig,
                     highlightImage: widget.shouldHighlight,
                     highlightScale: widget.highlightScale,
                   );
@@ -223,6 +222,8 @@ class _MessageViewState extends State<MessageView>
                 }
               }()) ??
               const SizedBox(),
+          const SizedBox(height: 4,),
+          Text(widget.message.messageTime),
           ValueListenableBuilder(
             valueListenable: widget.message.statusNotifier,
             builder: (context, value, child) {
