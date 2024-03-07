@@ -222,8 +222,8 @@ class _MessageViewState extends State<MessageView>
                 }
               }()) ??
               const SizedBox(),
-          const SizedBox(height: 4,),
-          Text(widget.message.messageTime),
+          // const SizedBox(height: 4,),
+          // Text(widget.message.messageTime),
           ValueListenableBuilder(
             valueListenable: widget.message.statusNotifier,
             builder: (context, value, child) {
