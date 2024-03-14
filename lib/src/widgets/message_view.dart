@@ -167,6 +167,11 @@ class _MessageViewState extends State<MessageView>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 6),
+            child: Text(
+                "${widget.message.createdAt.hour}:${widget.message.createdAt.minute.toStringAsFixed(00)}"),
+          ),
           (() {
                 if (widget.message.messageType.isImage) {
                   return ImageMessageView(
