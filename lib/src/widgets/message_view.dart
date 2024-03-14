@@ -169,8 +169,7 @@ class _MessageViewState extends State<MessageView>
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 6),
-            child: Text(
-                "${widget.message.createdAt.hour}:${widget.message.createdAt.minute.toStringAsFixed(00)}"),
+            child: Text(widget.message.messageTime),
           ),
           (() {
                 if (widget.message.messageType.isImage) {

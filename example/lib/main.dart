@@ -285,7 +285,7 @@ class _ChatScreenState extends State<ChatScreen> {
         spamMessage: 'this is spam message',
         createdAt: DateTime.now(),
         message: message,
-        messageTime: '${DateTime.now().hour}:${DateTime.now().minute}',
+        messageTime: '12:00 am',
         sendBy: currentUser.id,
         replyMessage: replyMessage,
         messageType: messageType,
