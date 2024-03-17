@@ -127,6 +127,22 @@ class TextMessageView extends StatelessWidget {
                   color: Colors.white,
                 ))
             : const SizedBox(),
+        isMessageBySender
+            ? Positioned(
+                left: -50,
+                bottom: 5,
+                child: Text(
+                  message.messageTime,
+                  style: TextStyle(color: Colors.grey, fontSize: 10),
+                ))
+            : Positioned(
+                right: -18,
+                bottom: 5,
+                child: Text(
+                  message.messageTime,
+                  style: TextStyle(color: Colors.grey, fontSize: 10),
+                ))
+
         // if (message.reaction.reactions.isNotEmpty)
         //   ReactionWidget(
         //     key: key,

@@ -167,10 +167,6 @@ class _MessageViewState extends State<MessageView>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 6),
-            child: Text(widget.message.messageTime),
-          ),
           (() {
                 if (widget.message.messageType.isImage) {
                   return ImageMessageView(
@@ -226,6 +222,16 @@ class _MessageViewState extends State<MessageView>
                 }
               }()) ??
               const SizedBox(),
+          widget.message.messageType.isVoice
+              ? Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 6, vertical: 5),
+                  child: Text(
+                    widget.message.messageTime,
+                    style: const TextStyle(color: Colors.grey, fontSize: 10),
+                  ),
+                )
+              : const SizedBox(),
           // const SizedBox(height: 4,),
           // Text(widget.message.messageTime),
           ValueListenableBuilder(

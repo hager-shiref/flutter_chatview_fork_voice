@@ -78,7 +78,6 @@ class ImageMessageView extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                print("tap here");
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return ImagesPreviewPage(
                     images: [imageUrl],
@@ -142,6 +141,13 @@ class ImageMessageView extends StatelessWidget {
                 ),
               ),
             ),
+            Positioned(
+              child: Text(
+                message.messageTime,
+                style: TextStyle(color: Colors.grey, fontSize: 10),
+              ),
+            )
+
             // if (message.reaction.reactions.isNotEmpty)
             // ReactionWidget(
             //   isMessageBySender: isMessageBySender,
