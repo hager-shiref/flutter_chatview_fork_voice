@@ -136,7 +136,7 @@ class TextMessageView extends StatelessWidget {
                   style: TextStyle(color: Colors.grey, fontSize: 10),
                 ))
             : Positioned(
-                right: -30,
+                right: -35,
                 bottom: 5,
                 child: Text(
                   message.messageTime,
