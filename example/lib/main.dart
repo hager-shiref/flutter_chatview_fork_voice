@@ -127,6 +127,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
             ),
           ],
+          appBarDirection: TextDirection.ltr,
         ),
         chatBackgroundConfig: ChatBackgroundConfiguration(
           messageTimeIconColor: theme.messageTimeIconColor,

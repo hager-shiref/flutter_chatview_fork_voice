@@ -30,6 +30,7 @@ class ChatViewAppBar extends StatelessWidget {
   const ChatViewAppBar({
     Key? key,
     required this.chatTitle,
+    required this.appBarDirection,
     this.backGroundColor,
     this.userStatus,
     this.profilePicture,
@@ -82,64 +83,68 @@ class ChatViewAppBar extends StatelessWidget {
 
   /// Allow user to turn on/off leading icon.
   final bool showLeading;
+  final TextDirection appBarDirection;
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      elevation: elevation ?? 1,
-      child: Container(
-        padding: padding ??
-            EdgeInsets.only(
-              top: MediaQuery.of(context).padding.top,
-              bottom: 4,
-            ),
-        color: backGroundColor ?? Colors.white,
-        child: Row(
-          children: [
-            if (showLeading)
-              leading ??
-                  IconButton(
-                    onPressed: onBackPress ?? () => Navigator.pop(context),
-                    icon: Icon(
-                      (!kIsWeb && Platform.isIOS)
-                          ? Icons.arrow_back_ios
-                          : Icons.arrow_back,
-                      color: backArrowColor,
-                    ),
-                  ),
-            Expanded(
-              child: Row(
-                children: [
-                  if (profilePicture != null)
-                    Padding(
-                      padding: const EdgeInsets.only(right: 8.0),
-                      child: CircleAvatar(
-                          backgroundImage: NetworkImage(profilePicture!)),
-                    ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        chatTitle,
-                        style: chatTitleTextStyle ??
-                            const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 0.25,
-                            ),
-                      ),
-                      if (userStatus != null)
-                        Text(
-                          userStatus!,
-                          style: userStatusTextStyle,
-                        ),
-                    ],
-                  ),
-                ],
+    return Directionality(
+      textDirection: appBarDirection,
+      child: Material(
+        elevation: elevation ?? 1,
+        child: Container(
+          padding: padding ??
+              EdgeInsets.only(
+                top: MediaQuery.of(context).padding.top,
+                bottom: 4,
               ),
-            ),
-            if (actions != null) ...actions!,
-          ],
+          color: backGroundColor ?? Colors.white,
+          child: Row(
+            children: [
+              if (showLeading)
+                leading ??
+                    IconButton(
+                      onPressed: onBackPress ?? () => Navigator.pop(context),
+                      icon: Icon(
+                        (!kIsWeb && Platform.isIOS)
+                            ? Icons.arrow_back_ios
+                            : Icons.arrow_back,
+                        color: backArrowColor,
+                      ),
+                    ),
+              Expanded(
+                child: Row(
+                  children: [
+                    if (profilePicture != null)
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: CircleAvatar(
+                            backgroundImage: NetworkImage(profilePicture!)),
+                      ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          chatTitle,
+                          style: chatTitleTextStyle ??
+                              const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 0.25,
+                              ),
+                        ),
+                        if (userStatus != null)
+                          Text(
+                            userStatus!,
+                            style: userStatusTextStyle,
+                          ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              if (actions != null) ...actions!,
+            ],
+          ),
         ),
       ),
     );
