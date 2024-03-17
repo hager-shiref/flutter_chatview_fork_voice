@@ -142,6 +142,8 @@ class ImageMessageView extends StatelessWidget {
               ),
             ),
             Positioned(
+              bottom: 0,
+              right: 0,
               child: Text(
                 message.messageTime,
                 style: TextStyle(color: Colors.grey, fontSize: 10),
