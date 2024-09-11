@@ -3,7 +3,7 @@ include: package:flutter_lints/flutter.yaml
 linter:
   rules:
     public_member_api_docs: false
-    avoid_print: true
+    avoid_debugPrint: true
     avoid_empty_else: true
     annotate_overrides: true
     cancel_subscriptions: true

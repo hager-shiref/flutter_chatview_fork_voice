@@ -30,7 +30,7 @@ import '../utils/package_strings.dart';
 /// Extension for DateTime to get specific formats of dates and time.
 extension TimeDifference on DateTime {
   String get getDay {
-    print("dateFormat $dateFormat");
+    debugPrint("dateFormat $dateFormat");
     final DateTime formattedDate =
         DateFormat(dateFormat, 'en_US').parse(toString());
     // final DateFormat formatter = DateFormat.yMMMMd(enUS);

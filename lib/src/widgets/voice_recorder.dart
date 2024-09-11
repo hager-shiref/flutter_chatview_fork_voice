@@ -81,7 +81,7 @@ class _RecordButtonState extends State<RecordButton>
 
   @override
   void dispose() {
-    record != null ? record!.dispose() : null;
+    record?.dispose();
     timer?.cancel();
     timer = null;
     super.dispose();
@@ -111,7 +111,7 @@ class _RecordButtonState extends State<RecordButton>
         width: size,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(Globals.borderRadius),
-          color: isRecording==true? Colors.white:Colors.transparent,
+          color: isRecording == true ? Colors.white : Colors.transparent,
         ),
         padding: const EdgeInsets.symmetric(vertical: 15),
         child: Column(
@@ -195,7 +195,7 @@ class _RecordButtonState extends State<RecordButton>
               //   behavior: HitTestBehavior.translucent,
               //   onTap: () async {
               //     widget.controller.reverse();
-              //     print("pressss");
+              //     debugPrint("pressss");
               //     Vibrate.feedback(FeedbackType.success);
               //     timer?.cancel();
               //     timer = null;
@@ -346,7 +346,7 @@ class _RecordButtonState extends State<RecordButton>
           onSubmitVoice!(filePath);
         }
         setState(() {
-          isRecording=false;
+          isRecording = false;
         });
       },
       onLongPressCancel: () {

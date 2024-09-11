@@ -288,7 +288,7 @@ class _ChatGroupedListWidgetState extends State<ChatGroupedListWidget>
                 order: chatBackgroundConfig.groupedListOrder,
                 sort: chatBackgroundConfig.sortEnable,
                 groupSeparatorBuilder: (separator) {
-                  print("separator $separator");
+                  debugPrint("separator $separator");
                   return featureActiveConfig?.enableChatSeparator ?? false
                       ? _GroupSeparatorBuilder(
                           separator: separator,
@@ -297,7 +297,7 @@ class _ChatGroupedListWidgetState extends State<ChatGroupedListWidget>
                           groupSeparatorBuilder:
                               chatBackgroundConfig.groupSeparatorBuilder,
                         )
-                      : SizedBox.shrink();
+                      : const SizedBox.shrink();
                 },
                 indexedItemBuilder: (context, message, index) {
                   return ValueListenableBuilder<String?>(
