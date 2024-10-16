@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import 'package:drag_down_to_pop/drag_down_to_pop.dart';
@@ -52,32 +53,38 @@ class ImagesPreviewPage extends StatelessWidget {
         onVerticalDragEnd: (_) {
           Navigator.pop(context);
         },
-        child: Container(
-            child: PhotoViewGallery.builder(
-          scrollPhysics: const BouncingScrollPhysics(),
-          builder: (BuildContext context, int index) {
-            return PhotoViewGalleryPageOptions(
-              imageProvider: NetworkImage(images[index]),
-              initialScale: PhotoViewComputedScale.contained,
-            );
-          },
-          enableRotation: true,
-          itemCount: images.length,
-          loadingBuilder: (context, event) => Center(
-            child: Container(
-              width: 20.0,
-              height: 20.0,
-              child: CircularProgressIndicator(
-                value: event == null
-                    ? 0
-                    : event.cumulativeBytesLoaded / event.expectedTotalBytes!,
+        child: images[0].endsWith('.svg')
+            ? Center(
+                child: SvgPicture.network(
+                  images[0],
+                ),
+              )
+            : PhotoViewGallery.builder(
+                scrollPhysics: const BouncingScrollPhysics(),
+                builder: (BuildContext context, int index) {
+                  return PhotoViewGalleryPageOptions(
+                    imageProvider: NetworkImage(images[index]),
+                    initialScale: PhotoViewComputedScale.contained,
+                  );
+                },
+                enableRotation: true,
+                itemCount: images.length,
+                loadingBuilder: (context, event) => Center(
+                  child: SizedBox(
+                    width: 20.0,
+                    height: 20.0,
+                    child: CircularProgressIndicator(
+                      value: event == null
+                          ? 0
+                          : event.cumulativeBytesLoaded /
+                              event.expectedTotalBytes!,
+                    ),
+                  ),
+                ),
+                onPageChanged: (index) {
+                  selectedIndex = index;
+                },
               ),
-            ),
-          ),
-          onPageChanged: (index) {
-            selectedIndex = index;
-          },
-        )),
       ),
     );
   }

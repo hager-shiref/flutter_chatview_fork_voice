@@ -190,5 +190,32 @@ class Data {
       status: MessageStatus.read,
       messageTime: '${DateTime.now().hour}:${DateTime.now().minute}',
     ),
+    Message(
+      id: '15',
+      message: "https://backend.qurancourses.cam/storage/160/check_circle.svg",
+      createdAt: DateTime.now(),
+      isSpam: false,
+      readAt: 'Today 11:01 AM',
+      spamMessage: '',
+      messageType: MessageType.image,
+      sendBy: '2',
+      reaction: Reaction(reactions: ['\u{2764}'], reactedUserIds: ['2']),
+      status: MessageStatus.read,
+      messageTime: '${DateTime.now().hour}:${DateTime.now().minute}',
+    ),
+    Message(
+      id: '15',
+      message:
+          "https://backend.qurancourses.cam/storage/161/discover-the-secret-language-of-flowers-2022-hero.jpeg",
+      createdAt: DateTime.now(),
+      isSpam: false,
+      readAt: 'Today 11:01 AM',
+      spamMessage: '',
+      messageType: MessageType.image,
+      sendBy: '2',
+      reaction: Reaction(reactions: ['\u{2764}'], reactedUserIds: ['2']),
+      status: MessageStatus.read,
+      messageTime: '${DateTime.now().hour}:${DateTime.now().minute}',
+    ),
   ];
 }

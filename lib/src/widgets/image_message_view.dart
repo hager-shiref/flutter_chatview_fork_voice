@@ -25,6 +25,7 @@ import 'dart:io';
 import 'package:chatview/src/extensions/extensions.dart';
 import 'package:chatview/src/models/models.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'images_preview_page.dart';
 import 'reaction_widget.dart';
@@ -108,22 +109,29 @@ class ImageMessageView extends StatelessWidget {
                         BorderRadius.circular(14),
                     child: (() {
                       if (imageUrl.isUrl) {
-                        return Image.network(
-                          imageUrl,
-                          fit: BoxFit.fitHeight,
-                          loadingBuilder: (context, child, loadingProgress) {
-                            if (loadingProgress == null) return child;
-                            return Center(
-                              child: CircularProgressIndicator(
-                                value: loadingProgress.expectedTotalBytes !=
-                                        null
-                                    ? loadingProgress.cumulativeBytesLoaded /
-                                        loadingProgress.expectedTotalBytes!
-                                    : null,
-                              ),
-                            );
-                          },
-                        );
+                        if (imageUrl.endsWith('.svg')) {
+                          return SvgPicture.network(
+                            imageUrl,
+                            fit: BoxFit.fitHeight,
+                          );
+                        } else {
+                          return Image.network(
+                            imageUrl,
+                            fit: BoxFit.fitHeight,
+                            loadingBuilder: (context, child, loadingProgress) {
+                              if (loadingProgress == null) return child;
+                              return Center(
+                                child: CircularProgressIndicator(
+                                  value: loadingProgress.expectedTotalBytes !=
+                                          null
+                                      ? loadingProgress.cumulativeBytesLoaded /
+                                          loadingProgress.expectedTotalBytes!
+                                      : null,
+                                ),
+                              );
+                            },
+                          );
+                        }
                       } else if (imageUrl.fromMemory) {
                         return Image.memory(
                           base64Decode(imageUrl
@@ -146,16 +154,9 @@ class ImageMessageView extends StatelessWidget {
               right: 0,
               child: Text(
                 message.messageTime,
-                style: TextStyle(color: Colors.grey, fontSize: 10),
+                style: const TextStyle(color: Colors.grey, fontSize: 10),
               ),
             )
-
-            // if (message.reaction.reactions.isNotEmpty)
-            // ReactionWidget(
-            //   isMessageBySender: isMessageBySender,
-            //   reaction: message.reaction,
-            //   messageReactionConfig: messageReactionConfig,
-            // ),
           ],
         ),
         if (!isMessageBySender) iconButton,
