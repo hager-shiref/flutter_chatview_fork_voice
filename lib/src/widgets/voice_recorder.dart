@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:lottie/lottie.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:record/record.dart';
@@ -243,7 +242,7 @@ class _RecordButtonState extends State<RecordButton>
                 onTap: () async {
                   widget.controller.reverse();
 
-                  Vibrate.feedback(FeedbackType.success);
+                  // Vibrate.feedback(FeedbackType.success);
 
                   timer?.cancel();
                   timer = null;
@@ -300,7 +299,7 @@ class _RecordButtonState extends State<RecordButton>
         debugPrint("onLongPressEnd");
 
         if (isCancelled(details.localPosition, context)) {
-          Vibrate.feedback(FeedbackType.heavy);
+          // Vibrate.feedback(FeedbackType.heavy);
           timer?.cancel();
           timer = null;
           startTime = null;
@@ -322,7 +321,7 @@ class _RecordButtonState extends State<RecordButton>
         } else if (checkIsLocked(details.localPosition)) {
           widget.controller.reverse();
 
-          Vibrate.feedback(FeedbackType.heavy);
+          // Vibrate.feedback(FeedbackType.heavy);
           debugPrint("Locked recording");
           debugPrint(details.localPosition.dy.toString());
           setState(() {
@@ -331,7 +330,7 @@ class _RecordButtonState extends State<RecordButton>
         } else {
           widget.controller.reverse();
 
-          Vibrate.feedback(FeedbackType.success);
+          // Vibrate.feedback(FeedbackType.success);
 
           timer?.cancel();
           timer = null;
@@ -358,7 +357,7 @@ class _RecordButtonState extends State<RecordButton>
         final documentPath =
             "${(await getApplicationDocumentsDirectory()).path}/";
 
-        Vibrate.feedback(FeedbackType.success);
+        // Vibrate.feedback(FeedbackType.success);
         if (await Record().hasPermission()) {
           record = Record();
           await record!.start(
