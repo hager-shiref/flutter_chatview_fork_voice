@@ -38,6 +38,7 @@ dependencies:
   photo_view: ^0.14.0
   flutter_svg:
   drag_down_to_pop: ^1.0.0
+  voice_message_player:
 
   # For formatting time locale in message receipts
   timeago: ^3.4.0

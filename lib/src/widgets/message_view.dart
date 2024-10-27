@@ -26,12 +26,13 @@ import 'package:flutter/material.dart';
 
 import 'package:chatview/src/extensions/extensions.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:voice_message_player/voice_message_player.dart' as VM;
 import '../utils/constants/constants.dart';
 import 'image_message_view.dart';
 import 'images_preview_page.dart';
 import 'text_message_view.dart';
 import 'reaction_widget.dart';
-import 'voice_message_view.dart';
+// import 'voice_message_view.dart';
 
 class MessageView extends StatefulWidget {
   const MessageView({
@@ -191,7 +192,26 @@ class _MessageViewState extends State<MessageView>
                     highlightMessage: widget.shouldHighlight,
                   );
                 } else if (widget.message.messageType.isVoice) {
-                  return VoiceMessageView(
+                  return VM.VoiceMessagePlayer(
+                    controller: VM.VoiceController(
+                      audioSrc: widget.message.message,
+                      maxDuration: const Duration(seconds: 10),
+                      isFile: false,
+                      onComplete: () {
+                        /// do something on complete
+                      },
+                      onPause: () {
+                        /// do something on pause
+                      },
+                      onPlaying: () {
+                        /// do something on playing
+                      },
+                      onError: (err) {
+                        /// do somethin on error
+                      },
+                    ),
+                    innerPadding: 12,
+                    cornerRadius: 20,
                     activeSliderColor: widget.isMessageBySender
                         ? Colors.white
                         : widget.outgoingChatBubbleConfig!.color!,
@@ -206,15 +226,6 @@ class _MessageViewState extends State<MessageView>
                             ? widget.inComingChatBubbleConfig!.color!
                             : widget.outgoingChatBubbleConfig!.color!,
                         fontSize: 10),
-                    controller: VoiceController(
-                      audioSrc: widget.message.message,
-                      maxDuration: const Duration(minutes: 4),
-                      isFile: false,
-                      onComplete: () {},
-                      onPause: () {},
-                      onPlaying: () {},
-                      onError: (err) {},
-                    ),
                   );
                 } else if (widget.message.messageType.isCustom &&
                     messageConfig?.customMessageBuilder != null) {
