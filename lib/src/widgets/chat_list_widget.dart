@@ -116,7 +116,7 @@ class _ChatListWidgetState extends State<ChatListWidget>
     with SingleTickerProviderStateMixin {
   final ValueNotifier<bool> _isNextPageLoading = ValueNotifier<bool>(false);
   ValueNotifier<bool> showPopUp = ValueNotifier(false);
-  final GlobalKey<ReactionPopupState> _reactionPopupKey = GlobalKey();
+  // final GlobalKey<ReactionPopupState> _reactionPopupKey = GlobalKey();
 
   ChatController get chatController => widget.chatController;
 
@@ -203,16 +203,16 @@ class _ChatListWidgetState extends State<ChatListWidget>
                     chatBubbleConfig: widget.chatBubbleConfig,
                     typeIndicatorConfig: widget.typeIndicatorConfig,
                     onChatBubbleLongPress: (yCoordinate, xCoordinate, message) {
-                      if (featureActiveConfig?.enableReactionPopup ?? false) {
-                        _reactionPopupKey.currentState?.refreshWidget(
-                          message: message,
-                          xCoordinate: xCoordinate,
-                          yCoordinate: yCoordinate < 0
-                              ? -(yCoordinate) - 5
-                              : yCoordinate,
-                        );
-                        showPopUp.value = true;
-                      }
+                      // if (featureActiveConfig?.enableReactionPopup ?? false) {
+                      //   // _reactionPopupKey.currentState?.refreshWidget(
+                      //   //   message: message,
+                      //   //   xCoordinate: xCoordinate,
+                      //   //   yCoordinate: yCoordinate < 0
+                      //   //       ? -(yCoordinate) - 5
+                      //   //       : yCoordinate,
+                      //   // );
+                      //   showPopUp.value = true;
+                      // }
                       if (featureActiveConfig?.enableReplySnackBar ?? false) {
                         _showReplyPopup(
                           message: message,
@@ -222,13 +222,13 @@ class _ChatListWidgetState extends State<ChatListWidget>
                     },
                     onChatListTap: _onChatListTap,
                   ),
-                  if (featureActiveConfig?.enableReactionPopup ?? false)
-                    ReactionPopup(
-                      key: _reactionPopupKey,
-                      reactionPopupConfig: widget.reactionPopupConfig,
-                      onTap: _onChatListTap,
-                      showPopUp: showPopupValue,
-                    ),
+                  // if (featureActiveConfig?.enableReactionPopup ?? false)
+                  //   ReactionPopup(
+                  //     key: _reactionPopupKey,
+                  //     reactionPopupConfig: widget.reactionPopupConfig,
+                  //     onTap: _onChatListTap,
+                  //     showPopUp: showPopupValue,
+                  //   ),
                 ],
               );
             },

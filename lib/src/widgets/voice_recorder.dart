@@ -35,7 +35,7 @@ class _RecordButtonState extends State<RecordButton>
   DateTime? startTime;
   Timer? timer;
   String recordDuration = "00:00";
-  Record? record;
+  AudioRecorder? record;
 
   bool isLocked = false;
   bool showLottie = false;
@@ -249,7 +249,7 @@ class _RecordButtonState extends State<RecordButton>
                   startTime = null;
                   recordDuration = "00:00";
 
-                  var filePath = await Record().stop();
+                  var filePath = await AudioRecorder().stop();
                   AudioState.files.add(filePath!);
                   debugPrint(filePath);
                   setState(() {
@@ -337,7 +337,7 @@ class _RecordButtonState extends State<RecordButton>
           startTime = null;
           recordDuration = "00:00";
 
-          var filePath = await Record().stop();
+          var filePath = await AudioRecorder().stop();
           AudioState.files.add(filePath!);
           // Globals.audioListKey.currentState!
           //     .insertItem(AudioState.files.length - 1);
@@ -358,14 +358,12 @@ class _RecordButtonState extends State<RecordButton>
             "${(await getApplicationDocumentsDirectory()).path}/";
 
         // Vibrate.feedback(FeedbackType.success);
-        if (await Record().hasPermission()) {
-          record = Record();
+        if (await AudioRecorder().hasPermission()) {
+          record = AudioRecorder();
           await record!.start(
+            RecordConfig(),
             path:
                 "${documentPath}audio_${DateTime.now().millisecondsSinceEpoch}.m4a",
-            encoder: AudioEncoder.aacLc,
-            bitRate: 128000,
-            samplingRate: 44100,
           );
           setState(() {
             isRecording = true;
