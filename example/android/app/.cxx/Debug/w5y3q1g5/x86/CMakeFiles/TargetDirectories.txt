@@ -1,0 +1,2 @@
+/Users/fatenelsaeed/IdeaProjects/flutter_chatview/example/android/app/.cxx/Debug/w5y3q1g5/x86/CMakeFiles/edit_cache.dir
+/Users/fatenelsaeed/IdeaProjects/flutter_chatview/example/android/app/.cxx/Debug/w5y3q1g5/x86/CMakeFiles/rebuild_cache.dir
